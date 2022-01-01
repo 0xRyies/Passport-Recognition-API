@@ -22,7 +22,7 @@ open a command prompt and run the following commands, one at a time:
 
 *-> python app.py*
 
-## Now the Backend (API) is working on your computer!!
+## Now you can scan passports using any camera device!!
 
 # License
 MIT License
