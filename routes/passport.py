@@ -8,7 +8,7 @@ from models.passports import PassportModel
 import werkzeug
 from errors.errors import Errors
 from OCR.handler import Detection
-from config import resource_fields, upload_path
+from config import resource_fields
 
 
 class PassportUpload(Resource):

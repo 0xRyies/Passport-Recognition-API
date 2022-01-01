@@ -1,11 +1,11 @@
 from flask_restful import fields
+from sqlalchemy import create_engine
+from sqlalchemy_utils import database_exists, create_database
 
-mysql = {'host': 'loclhost',
-         'user': 'root',
-         'passwd': '',
-         'db': 'test'}
 
-mysqlconfig = 'mysql+pymysql://root:@localhost:3306/test' #change this later
+engine = create_engine("mysql+pymysql://root:@localhost:3306/passportRG")
+if not database_exists(engine.url):
+    create_database(engine.url)
 Secretkey = 'ThisIsAReallyHardToGuessSecret!'
 resource_fields = {
     'Country': fields.String,
@@ -19,6 +19,5 @@ resource_fields = {
     'Status': fields.Boolean,
     'Problem': fields.String
 }
-upload_path = './tempUpload'
 
 

@@ -1,16 +1,16 @@
 from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
-from config import mysqlconfig
+from config import engine
 from routes.passport import PassportUpload
-from routes.adminauth import AdminAuth, AdminCreate
+from routes.adminauth import AdminAuth, AdminCreate, DefaultCredentials
 from routes.admincrud import AdminCRUD, AdminAllPassports
 from routes.jwtvalid import TokenValidate
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = mysqlconfig
+app.config['SQLALCHEMY_DATABASE_URI'] = engine.url
 
 
 @app.before_first_request
@@ -18,6 +18,7 @@ def create_tables():
     from db import db
     db.init_app(app)
     db.create_all()
+    DefaultCredentials()
 
 
 # api routes
@@ -30,4 +31,4 @@ api.add_resource(TokenValidate, "/api/auth/token")
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run('0.0.0.0', debug=True)

@@ -14,6 +14,13 @@ adminParse.add_argument('password', required=True)
 
 
 ###############################################
+def DefaultCredentials():
+    user = User.query.filter_by(username='admin').first()
+    if not user:
+        adminPassHash = generate_password_hash('admin', method='sha256')
+        defaultAdmin = User(username='admin', password=adminPassHash, admin=True)
+        db.session.add(defaultAdmin)
+        db.session.commit()
 
 class AdminCreate(Resource):
 
@@ -32,16 +39,17 @@ class AdminCreate(Resource):
         if Errors.isEmpty(adminArgs['username']) or Errors.isEmpty(adminArgs['password']):
             Emptymessage = json.dumps({'Message': 'Parameters can\'t be empty'})
             abort(Response(Emptymessage, 403))
-        hashed_password = generate_password_hash(adminArgs['password'], method='sha256')
-        try:
-            new_user = User(username=adminArgs['username'], password=hashed_password, admin=True)
-            db.session.add(new_user)
-            db.session.commit()
-        except:
+        user = User.query.filter_by(username=adminArgs['username']).first()
+        if user:
             Existsmessage = json.dumps({'Message': 'This username exists!'})
             abort(Response(Existsmessage, 409))
+        hashed_password = generate_password_hash(adminArgs['password'], method='sha256')
+        new_user = User(username=adminArgs['username'], password=hashed_password, admin=True)
+        db.session.add(new_user)
+        db.session.commit()
+
         user = User.query.filter_by(username=adminArgs['username']).first()
-        accessToken, refreshToken = generateToken(user)
+        accessToken = generateToken(user)
         return {'Status': 'New user has been created!',
                 'Token': accessToken
                 }, 201
@@ -53,7 +61,6 @@ class AdminCreate(Resource):
 class AdminAuth(Resource):
 
     def post(self):
-
         adminArgs = adminParse.parse_args()
         user = User.query.filter_by(username=adminArgs['username']).first()
         Credsmessage = json.dumps({'Message': 'Bad login credentials'})
