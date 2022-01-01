@@ -14,13 +14,15 @@ MySQL dataBase must be running in your computer by run Apache and MySQL Module i
 ### (4) Commands
 open a command prompt and run the following commands, one at a time:
 
-**-> git clone https://github.com/0xRyies/Passport-Recognition-API.git**
+```
+git clone https://github.com/0xRyies/Passport-Recognition-API.git
 
-*-> cd Passport-Recognition-API*
+cd Passport-Recognition-API*
 
-*-> pip install -r requirements.txt*
+pip install -r requirements.txt*
 
-*-> python app.py*
+python app.py*
+```
 
 ### Now you can scan passports using any camera device :)
 
