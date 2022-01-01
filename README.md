@@ -1,4 +1,4 @@
-# Passport Recognition API
+# Passport Recognition API (Step-By-Step)
 ### To run the Backend (API) on your computer you must follow the following steps
 ## (1) Download tesseract
 ### You can download tesseract from this link:
