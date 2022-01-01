@@ -22,7 +22,7 @@ open a command prompt and run the following commands, one at a time:
 
 *-> python app.py*
 
-## Now you can scan passports using any camera device!!
+## Now you can scan passports using any camera device :)
 
 # License
 MIT License
