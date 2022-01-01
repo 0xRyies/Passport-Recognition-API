@@ -8,7 +8,7 @@ You can download tesseract from this link:
 You must edit PATH variable to include tesseract command and the following video will help you:
 **[YouTube](https://www.youtube.com/watch?v=2kWvk4C1pMo)**
 
-#### 3- Run MySQL DataBase
+#### 3- Run MySQL Database
 MySQL dataBase must be running in your computer by run Apache and MySQL Module in XAMPP.
 
 #### 4- Commands
