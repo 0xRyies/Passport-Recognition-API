@@ -1,17 +1,17 @@
 # Passport Recognition API (Step-By-Step)
-#### To run the Backend (API) on your computer you must follow the following steps
-### (1) Download tesseract
+To run the Backend (API) on your computer you must follow the following steps
+#### 1- Download tesseract
 You can download tesseract from this link:
 **[Tesseract](https://github.com/tesseract-ocr/tesseract)**
 
-### (2) Edit PATH
+#### 2- Edit PATH
 You must edit PATH variable to include tesseract command and the following video will help you:
 **[YouTube](https://www.youtube.com/watch?v=2kWvk4C1pMo)**
 
-### (3) Run MySQL DataBase
+#### 3- Run MySQL DataBase
 MySQL dataBase must be running in your computer by run Apache and MySQL Module in XAMPP.
 
-### (4) Commands
+#### 4- Commands
 open a command prompt and run the following commands, one at a time:
 
 ```
@@ -24,7 +24,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-### Now you can scan passports using any camera device :)
+Now you can scan passports using any camera device :)
 
 ## License
 MIT License
